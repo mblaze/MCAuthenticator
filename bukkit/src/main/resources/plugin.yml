@@ -3,6 +3,7 @@ main: io.ibj.mcauthenticator.MCAuthenticator
 version: ${project.version}
 authors: ['Joseph Hirschfeld <joe@ibj.io>','aaomidi']
 description: "Provides 2FA ability to minecraft servers"
+api-version: 1.18
 
 commands:
   auth:

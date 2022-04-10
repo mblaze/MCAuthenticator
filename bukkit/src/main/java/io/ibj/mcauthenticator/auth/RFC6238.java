@@ -10,6 +10,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.MapMeta;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
@@ -122,7 +123,10 @@ public class RFC6238 implements Authenticator {
         map.getRenderers().forEach(map::removeRenderer);
         map.addRenderer(mapRenderer);
 
-        ItemStack mapItem = new ItemStack(Material.MAP, 1, map.getId());
+        ItemStack mapItem = new ItemStack(Material.FILLED_MAP, 1);
+        MapMeta mapMeta = (MapMeta) mapItem.getItemMeta();
+        mapMeta.setMapView(map);
+        mapItem.setItemMeta(mapMeta);
         p.getInventory().setHeldItemSlot(0);
         p.getInventory().setItemInMainHand(mapItem);
         p.sendMap(map);
